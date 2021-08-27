@@ -32,7 +32,7 @@ import java.util.Map;
  * @author squid233
  * @since 0.1.0
  */
-public class MapStr2Str extends HashMap<String, String> {
+public class MapStr2Str extends MapStr2Obj<String> {
     /**
      * construct
      *

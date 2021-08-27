@@ -41,10 +41,7 @@ public class ArrayHelper {
      * @return new array
      */
     public static String[] removeNull(String[] arr) {
-        List<String> list = new ArrayList<>(arr.length);
-        list.addAll(Arrays.asList(arr));
-        while (list.remove(null) || list.remove("")) ;
-        return list.toArray(new String[0]);
+        return Arrays.stream(arr).filter(s -> s != null && !"".equals(s)).toArray(String[]::new);
     }
 
     /**
@@ -52,14 +49,9 @@ public class ArrayHelper {
      *
      * @param arr String array
      * @return int array
-     * @since 0.9.0
      */
     public static int[] toIArray(String[] arr) {
-        int[] ia = new int[arr.length];
-        for (int i = 0; i < arr.length; i++) {
-            ia[i] = Integer.parseInt(arr[i]);
-        }
-        return ia;
+        return Arrays.stream(arr).mapToInt(Integer::parseInt).toArray();
     }
 
     /**
@@ -68,7 +60,6 @@ public class ArrayHelper {
      * @param original  original array
      * @param newLength new length
      * @return Copy of expanded array
-     * @since 0.9.0
      */
     public static int[] expand(int[] original, int newLength) {
         return Arrays.copyOf(original, newLength);

@@ -1,3 +1,7 @@
+0.2.0
+New feature: MapStr2Obj
+Changed: `ArrayHelper.toIArray` and `ArrayHelper.removeNull` use stream API now
+
 0.1.0
 pre-alpha
 org.overrun.commonutils
