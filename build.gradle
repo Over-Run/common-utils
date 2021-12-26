@@ -7,13 +7,17 @@ plugins {
 
 sourceCompatibility = targetCompatibility = JavaVersion.VERSION_1_8
 
-group 'io.github.over-run'
-archivesBaseName = 'common-utils'
-version = '0.1.0'
+group projGroupId
+archivesBaseName = projArtifactId
+version = projVersion
 
 repositories {
     mavenCentral()
     maven { url 'https://maven.aliyun.com/repository/central' }
+    maven { url 'https://jitpack.io' }
+    // temporary maven repositories
+    maven { url 'https://s01.oss.sonatype.org/content/repositories/releases' }
+    maven { url 'https://s01.oss.sonatype.org/content/repositories/snapshots' }
 }
 
 tasks.withType(JavaCompile) {
@@ -23,10 +27,10 @@ tasks.withType(JavaCompile) {
 jar {
     from 'LICENSE'
     manifest {
-        attributes 'Specification-Title': 'Common Utils',
+        attributes 'Specification-Title': projName,
                 'Specification-Vendor': 'Overrun Organization',
                 'Specification-Version': '0',
-                'Implementation-Title': 'Common Utils 0',
+                'Implementation-Title': projName,
                 'Implementation-Vendor': 'Overrun Organization',
                 'Implementation-Version': archiveVersion
     }
@@ -53,19 +57,19 @@ java {
 
 publishing.publications {
     mavenJava(MavenPublication) {
-        groupId = 'io.github.over-run'
-        artifactId = 'common-utils'
-        version = project.version
-        description = 'Utils for Java.'
+        groupId = projGroupId
+        artifactId = projArtifactId
+        version = projVersion
+        description = projDesc
         from components.java
         pom {
-            name = 'Common Utils'
-            description = 'Utils for Java.'
-            url = 'https://github.com/Over-Run/common-utils'
+            name = projName
+            description = projDesc
+            url = projVcs
             licenses {
                 license {
                     name = 'The MIT License'
-                    url = 'https://raw.githubusercontent.com/Over-Run/common-utils/pre-alpha/LICENSE'
+                    url = 'https://raw.githubusercontent.com/Over-Run/common-utils/0.x/LICENSE'
                 }
             }
             developers {
@@ -76,9 +80,9 @@ publishing.publications {
                 }
             }
             scm {
-                connection = 'https://github.com/Over-Run/common-utils.git'
-                developerConnection = 'https://github.com/Over-Run/common-utils.git'
-                url = 'https://github.com/Over-Run/common-utils'
+                connection = "${projVcs}.git"
+                developerConnection = "${projVcs}.git"
+                url = projVcs
             }
         }
     }
