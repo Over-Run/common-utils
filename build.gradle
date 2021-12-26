@@ -28,11 +28,11 @@ jar {
     from 'LICENSE'
     manifest {
         attributes 'Specification-Title': projName,
-                'Specification-Vendor': 'Overrun Organization',
-                'Specification-Version': '0',
-                'Implementation-Title': projName,
-                'Implementation-Vendor': 'Overrun Organization',
-                'Implementation-Version': archiveVersion
+            'Specification-Vendor': 'Overrun Organization',
+            'Specification-Version': '0',
+            'Implementation-Title': projName,
+            'Implementation-Vendor': 'Overrun Organization',
+            'Implementation-Version': archiveVersion
     }
 }
 
@@ -100,8 +100,8 @@ publishing.repositories {
             password System.getenv("OSSRH_PASSWORD")
         }
         url = version.endsWith('SNAPSHOT')
-                ? 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
-                : 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
+            ? 'https://s01.oss.sonatype.org/content/repositories/snapshots/'
+            : 'https://s01.oss.sonatype.org/service/local/staging/deploy/maven2/'
     }
 }
 

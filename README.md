@@ -9,7 +9,7 @@ Utils for developing Java software:coffee:.
 
 ```groovy
 dependencies {
-    implementation "io.github.over-run:common-utils:0.1.0"
+    implementation "io.github.over-run:common-utils:0.3.0"
 }
 ```
 

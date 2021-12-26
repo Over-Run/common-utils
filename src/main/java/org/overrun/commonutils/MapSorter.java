@@ -25,10 +25,7 @@
 
 package org.overrun.commonutils;
 
-import java.util.Comparator;
-import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.Map;
+import java.util.*;
 
 /**
  * @author squid233
@@ -37,10 +34,10 @@ import java.util.Map;
 public class MapSorter {
     public static <K, V> LinkedHashMap<K, V> sort(Map<K, V> src,
                                                   Comparator<Map.Entry<K, V>> comparator) {
-        var list = new LinkedList<>(src.entrySet());
+        List<Map.Entry<K, V>> list = new LinkedList<>(src.entrySet());
         list.sort(comparator);
-        var dst = new LinkedHashMap<K, V>();
-        for (var e : list) {
+        LinkedHashMap<K, V> dst = new LinkedHashMap<>();
+        for (Map.Entry<K, V> e : list) {
             dst.put(e.getKey(), e.getValue());
         }
         return dst;
